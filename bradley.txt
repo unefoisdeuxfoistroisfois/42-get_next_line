@@ -1,0 +1,4 @@
+Bonjour
+Je suis étudiant à 42
+Voici une ligne de test
+Fin

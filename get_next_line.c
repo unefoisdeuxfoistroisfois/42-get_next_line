@@ -6,8 +6,12 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/05/18 21:17:37 by britela-         ###   ########.fr       */
+/*   Updated: 2025/05/21 23:05:29 by bradley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 
+char	*get_next_line(int fd)
+{
+}
