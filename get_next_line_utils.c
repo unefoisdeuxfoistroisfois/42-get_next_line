@@ -1,27 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bradley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 18:47:39 by britela-          #+#    #+#             */
-/*   Updated: 2025/05/27 19:24:25 by bradley          ###   ########.fr       */
+/*   Created: 2025/05/27 18:20:17 by bradley           #+#    #+#             */
+/*   Updated: 2025/05/27 18:21:23 by bradley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 15
-# endif
-
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-char	*get_next_line(int fd);
-
-# endif
