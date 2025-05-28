@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/05/27 20:05:15 by bradley          ###   ########.fr       */
+/*   Updated: 2025/05/28 21:35:25 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,30 @@
 
 char	*get_next_line(int fd)
 {
-	int	text;
-	char	*buffer;
-	//si existe pas
-	if (fd <0 || BUFFER_SIZE <= 0)
+	ssize_t	i;// peut contenir un -
+	char	*word;
+	static	char *conc;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		return (NULL);
 	}
-	//alloue de la memoire pour buffer
-	buffer = malloc(sizeof(char*) *BUFFER_SIZE);
-	if (buffer == NULL)
+
+	word = malloc(sizeof(char) *BUFFER_SIZE + 1);
+	if (word == NULL)
 	{
 		return (NULL);
 	}
-	//je lis de mon fd a mon buffer et le nombre que je veux lire
-	text = read(fd, buffer, BUFFER_SIZE);
-	if (text <= 0)
+	//je lis de mon fd a mon word et le nombre que je veux lire
+	conc = "";
+	while ((i = read(fd, word, BUFFER_SIZE)) > 0)
 	{
-		free(buffer);
-		return (NULL);
+		if (word[i] == '\n')
+		{
+			return (word);
+		}
+		conc = ft_strjoin(conc, word); 
 	}
-	return (buffer);
+	free(word);
+	return (conc);
 }

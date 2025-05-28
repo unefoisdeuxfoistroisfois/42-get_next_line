@@ -1,4 +1,1 @@
-Bonjour
-Je suis étudiant à 42
-Voici une ligne de test
-Fin
+Bonjour\nJe suis étudiant à 42\nVoici une ligne de test\nFin
