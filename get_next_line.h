@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:47:39 by britela-          #+#    #+#             */
-/*   Updated: 2025/05/28 21:45:50 by britela-         ###   ########.fr       */
+/*   Updated: 2025/05/30 23:07:25 by bradley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(char const *str);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 # endif

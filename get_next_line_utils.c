@@ -6,12 +6,50 @@
 /*   By: bradley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:20:17 by bradley           #+#    #+#             */
-/*   Updated: 2025/05/28 21:44:54 by britela-         ###   ########.fr       */
+/*   Updated: 2025/05/31 00:02:14 by bradley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+char	*ft_empty(void)
+{
+	char	*newword;
+
+	newword = malloc(1);
+	if (newword != NULL)
+		newword[0] = '\0';
+	return (newword);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char				*newword;
+	unsigned int		sizes;
+	size_t				i;
+	size_t				j;
+
+	if (s == NULL)
+		return (NULL);
+	sizes = ft_strlen(s);
+	if (start >= sizes)
+		return (ft_empty());
+	if (len > sizes - start)
+		len = sizes - start;
+	newword = malloc(sizeof(char) * (len + 1));
+	if (newword == NULL)
+		return (NULL);
+	i = start;
+	j = 0;
+	while (j < len)
+	{
+		newword[j] = s[i];
+		j++;
+		i++;
+	}
+	newword[j] = '\0';
+	return (newword);
+}
 size_t	ft_strlen(char const *str)
 {
 	size_t	i;
