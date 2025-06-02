@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:00:31 by britela-          #+#    #+#             */
-/*   Updated: 2025/05/27 18:29:10 by bradley          ###   ########.fr       */
+/*   Updated: 2025/06/02 19:30:49 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		text = get_next_line(fd);
-		while(text != NULL) // signifie que on est arriver a la fin du fichier.
+		while((text = get_next_line(fd)) != NULL) // signifie que on est arriver a la fin du fichier.
 		{
 			printf("%s", text);
+			printf("OKOKOK\n");
 			free(text);
-			text = get_next_line(fd);
 		}
 		close(fd);
 	}

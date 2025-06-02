@@ -6,11 +6,41 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/05/31 00:02:40 by bradley          ###   ########.fr       */
+/*   Updated: 2025/06/02 20:18:45 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_reste(char *str)
+{
+	int	i;
+	int	j;
+	char	*rest;
+
+	i = 0;
+	j = 0;
+	if (str == NULL)
+		return (NULL);
+	while (str[i] != '\0' && str[i] != '\n')
+		i++;
+	if (str[i] != '\0') // pas de \n
+	{
+		free(str);
+		return (NULL);
+	}
+	i++; // sauter le \n
+	rest = malloc(ft_strlen(str) - i + 1);
+	if (rest == NULL)
+		return (NULL);
+	while (str[i] != '\0')
+		rest[j] = str[i];
+		i++;
+		j++;
+	rest[j] = '\0';
+	free(str);
+	return (rest);
+}
 
 char	*ft_verif_mot(char *str)
 {
@@ -18,11 +48,13 @@ char	*ft_verif_mot(char *str)
 	char	*newword;
 
 	i = 0;
+	if (str == NULL)
+		return (NULL);
 	while(str[i] != '\0' && str[i] != '\n')
 	{
 		i++;
 	}
-	if (str[i] != '\n')
+	if (str[i] == '\n')
 	{
 		i++;
 	}
@@ -34,9 +66,10 @@ char	*get_next_line(int fd)
 {
 	ssize_t	i;// peut contenir un -
 	char	*word;
-	static	char *conc;
+	static	char *conc = NULL;
+	char	*line;
+	char	*position;
 
-	conc = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		return (NULL);
@@ -48,11 +81,20 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	//je lis de mon fd a mon word et le nombre que je veux lire
-	while ((i = read(fd, word, BUFFER_SIZE)) > 0)
+	position = ft_strchr(conc, '\n');
+	while ((conc == NULL || position == NULL) && (i = read(fd, word, BUFFER_SIZE)) > 0)
 	{
-		word[i + 1] = '\0';
+		word[i] = '\0';
 		conc = ft_strjoin(conc, word); 
 	}
 	free(word);
-	return (conc);
+	if (!conc || conc[0] == '\0')
+	{
+		free(conc);
+		conc = NULL;
+		return (NULL);
+	}
+	line = ft_verif_mot(conc);
+	conc = ft_reste(conc); 
+	return (line);
 }

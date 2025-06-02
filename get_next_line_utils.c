@@ -6,11 +6,37 @@
 /*   By: bradley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:20:17 by bradley           #+#    #+#             */
-/*   Updated: 2025/05/31 00:02:14 by bradley          ###   ########.fr       */
+/*   Updated: 2025/06/02 18:58:29 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_strchr(const char *s, int c)
+{
+	char	cc;
+	char	*str;
+	int		i;
+
+	if (s == NULL)
+		return (NULL);
+	cc = (char)c;
+	str = (char *)s;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == cc)
+		{
+			return (&str[i]);
+		}
+		i++;
+	}
+	if (cc == '\0')
+	{
+		return (&str[i]);
+	}
+	return (NULL);
+}
 
 char	*ft_empty(void)
 {
@@ -62,15 +88,24 @@ size_t	ft_strlen(char const *str)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*newword;
 	int		i;
 	int		j;
-
+	if (s1 == NULL)
+	{
+		s1 = malloc(1);
+		if (s1 == NULL)
+			return (NULL);
+		s1[0] = '\0';
+	}
 	newword = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
 	if (newword == NULL)
+	{
+		free(s1);
 		return (NULL);
+	}
 	i = 0;
 	while (s1[i] != '\0')
 	{
@@ -85,5 +120,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	newword[i] = '\0';
+	free(s1);
 	return (newword);
 }
