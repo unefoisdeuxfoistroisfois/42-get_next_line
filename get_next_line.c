@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/02 20:18:45 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/02 22:46:39 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,10 @@ char	*get_next_line(int fd)
 	char	*position;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-	{
 		return (NULL);
-	}
-
 	word = malloc(sizeof(char) *BUFFER_SIZE + 1);
 	if (word == NULL)
-	{
 		return (NULL);
-	}
 	//je lis de mon fd a mon word et le nombre que je veux lire
 	position = ft_strchr(conc, '\n');
 	while ((conc == NULL || position == NULL) && (i = read(fd, word, BUFFER_SIZE)) > 0)
@@ -88,7 +83,7 @@ char	*get_next_line(int fd)
 		conc = ft_strjoin(conc, word); 
 	}
 	free(word);
-	if (!conc || conc[0] == '\0')
+	if (conc == NULL || conc[0] == '\0')
 	{
 		free(conc);
 		conc = NULL;
