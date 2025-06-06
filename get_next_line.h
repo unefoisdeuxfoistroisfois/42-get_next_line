@@ -6,16 +6,16 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:47:39 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/03 19:04:24 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/06 16:18:06 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 15
-# endif
+//#ifndef BUFFER_SIZE
+//# define BUFFER_SIZE 15
+//# endif
 
 # include <fcntl.h>
 # include <unistd.h>
