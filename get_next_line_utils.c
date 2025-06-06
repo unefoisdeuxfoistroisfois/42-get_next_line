@@ -6,7 +6,7 @@
 /*   By: bradley <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 18:20:17 by bradley           #+#    #+#             */
-/*   Updated: 2025/06/02 18:58:29 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/06 18:39:58 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	newword[j] = '\0';
 	return (newword);
 }
+
 size_t	ft_strlen(char const *str)
 {
 	size_t	i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		i++;
 	}
@@ -93,6 +94,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*newword;
 	int		i;
 	int		j;
+
 	if (s1 == NULL)
 	{
 		s1 = malloc(1);
@@ -102,10 +104,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	newword = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
 	if (newword == NULL)
-	{
-		free(s1);
 		return (NULL);
-	}
 	i = 0;
 	while (s1[i] != '\0')
 	{

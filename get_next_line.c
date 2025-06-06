@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/06 16:15:31 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/06 18:32:24 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,11 @@ char	*get_next_line(int fd)
 		conc = ft_strjoin(conc, word); 
 	}
 	free(word);
-//	if (conc == NULL || conc[0] == '\0')
-//	{
-//		free(conc);
-//		conc = NULL;
-//		return (NULL);
-//	}
+	if (conc == NULL || conc[0] == '\0')
+	{
+		free(conc);
+		return (NULL);
+	}
 	line = ft_verif_mot(conc);
 	conc = ft_reste(conc); 
 	return (line);
