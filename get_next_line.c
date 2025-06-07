@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/07 15:43:55 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:30:03 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ char	*get_next_line(int fd)
 	if (word == NULL)
 		return (NULL);
 	position = ft_strchr(conc, '\n');
-	while ((conc == NULL || position == NULL)
-		&& (i = read(fd, word, BUFFER_SIZE)) > 0)
+	while (position == NULL && (i = read(fd, word, BUFFER_SIZE)) > 0)
 	{
 		word[i] = '\0';
 		conc = ft_strjoin(conc, word);
