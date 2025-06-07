@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/06 18:32:24 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/07 14:29:18 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_reste(char *str)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*rest;
 
 	i = 0;
@@ -24,19 +24,17 @@ char	*ft_reste(char *str)
 		return (NULL);
 	while (str[i] != '\0' && str[i] != '\n')
 		i++;
-	if (str[i] == '\0') //si pas de \n trouvé 
+	if (str[i] == '\0')
 	{
 		free(str);
 		return (NULL);
 	}
-	i++; // sauter le \n
+	i++;
 	rest = malloc(ft_strlen(str) - i + 1);
 	if (rest == NULL)
 		return (NULL);
 	while (str[i] != '\0')
-	{
 		rest[j++] = str[i++];
-	}
 	rest[j] = '\0';
 	free(str);
 	return (rest);
@@ -44,13 +42,13 @@ char	*ft_reste(char *str)
 
 char	*ft_verif_mot(char *str)
 {
-	int	i;
+	int		i;
 	char	*newword;
 
 	i = 0;
 	if (str == NULL)
 		return (NULL);
-	while(str[i] != '\0' && str[i] != '\n')
+	while (str[i] != '\0' && str[i] != '\n')
 	{
 		i++;
 	}
@@ -58,28 +56,29 @@ char	*ft_verif_mot(char *str)
 	{
 		i++;
 	}
-	newword = ft_substr(str,0,i);
+	newword = ft_substr(str, 0, i);
 	return (newword);
 }
 
 char	*get_next_line(int fd)
 {
-	ssize_t	i;// peut contenir un -
-	char	*word;
-	static	char *conc = NULL;
-	char	*line;
-	char	*position;
+	ssize_t		i;
+	char		*word;
+	char		*line;
+	char		*position;
+	static char	*conc;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	word = malloc(sizeof(char) *BUFFER_SIZE + 1);
+	word = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (word == NULL)
 		return (NULL);
 	position = ft_strchr(conc, '\n');
-	while ((conc == NULL || position == NULL) && (i = read(fd, word, BUFFER_SIZE)) > 0)
+	while ((conc == NULL || position == NULL)
+		&& (i = read(fd, word, BUFFER_SIZE)) > 0)
 	{
 		word[i] = '\0';
-		conc = ft_strjoin(conc, word); 
+		conc = ft_strjoin(conc, word);
 	}
 	free(word);
 	if (conc == NULL || conc[0] == '\0')
@@ -88,6 +87,6 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	line = ft_verif_mot(conc);
-	conc = ft_reste(conc); 
+	conc = ft_reste(conc);
 	return (line);
 }
