@@ -6,11 +6,19 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/07 14:29:18 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/07 15:43:55 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	ft_free(char *str)
+{
+	if (str != NULL)
+	{
+		free(str);
+	}
+}
 
 char	*ft_reste(char *str)
 {
@@ -26,7 +34,7 @@ char	*ft_reste(char *str)
 		i++;
 	if (str[i] == '\0')
 	{
-		free(str);
+		ft_free(str);
 		return (NULL);
 	}
 	i++;
@@ -36,7 +44,7 @@ char	*ft_reste(char *str)
 	while (str[i] != '\0')
 		rest[j++] = str[i++];
 	rest[j] = '\0';
-	free(str);
+	ft_free(str);
 	return (rest);
 }
 
@@ -80,10 +88,10 @@ char	*get_next_line(int fd)
 		word[i] = '\0';
 		conc = ft_strjoin(conc, word);
 	}
-	free(word);
+	ft_free(word);
 	if (conc == NULL || conc[0] == '\0')
 	{
-		free(conc);
+		ft_free(conc);
 		return (NULL);
 	}
 	line = ft_verif_mot(conc);
