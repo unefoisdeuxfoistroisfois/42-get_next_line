@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/08 12:18:16 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/08 14:38:20 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,11 @@ char	*ft_verif_mot(char *str)
 	return (newword);
 }
 
-char	*get_next_line(int fd)
+void	ft_read(int fd, char *word, char *conc)
 {
-	ssize_t		i;
-	char		*word;
-	char		*line;
-	char		*position;
-	static char	*conc;
+    ssize_t	i;
+    char 	*position;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	word = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (word == NULL)
-		return (NULL);
 	position = ft_strchr(conc, '\n');
 	while (position == NULL && i > 0)
 	{
@@ -88,11 +80,25 @@ char	*get_next_line(int fd)
 		if (i < 0)
 		{
 			ft_free(word);
-			return (NULL);
+			return; 
 		}
 		word[i] = '\0';
 		conc = ft_strjoin(conc, word);
 	}
+}
+
+char	*get_next_line(int fd)
+{
+	char		*word;
+	char		*line;
+	static char	*conc;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	word = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (word == NULL)
+		return (NULL);
+	ft_read(fd, word, conc);
 	ft_free(word);
 	if (conc == NULL || conc[0] == '\0')
 	{
