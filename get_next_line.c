@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/08 14:38:20 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/08 15:31:54 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,12 @@ char	*ft_verif_mot(char *str)
 	return (newword);
 }
 
-void	ft_read(int fd, char *word, char *conc)
+char	*ft_read(int fd, char *word, char *conc)
 {
-    ssize_t	i;
-    char 	*position;
+	ssize_t	i;
+	char	*position;
 
+	i = 1;
 	position = ft_strchr(conc, '\n');
 	while (position == NULL && i > 0)
 	{
@@ -80,11 +81,12 @@ void	ft_read(int fd, char *word, char *conc)
 		if (i < 0)
 		{
 			ft_free(word);
-			return; 
+			return (NULL);
 		}
 		word[i] = '\0';
 		conc = ft_strjoin(conc, word);
 	}
+	return (conc);
 }
 
 char	*get_next_line(int fd)
@@ -98,7 +100,7 @@ char	*get_next_line(int fd)
 	word = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (word == NULL)
 		return (NULL);
-	ft_read(fd, word, conc);
+	conc = ft_read(fd, word, conc);
 	ft_free(word);
 	if (conc == NULL || conc[0] == '\0')
 	{
