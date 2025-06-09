@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 13:54:06 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/08 15:53:48 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/09 10:55:28 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,16 @@ char	*ft_empty(void)
 {
 	char	*newword;
 
-	newword = malloc(1);
+	newword = malloc(sizeof(char) * 1);
 	if (newword != NULL)
 		newword[0] = '\0';
+	if (newword)
+	{
+		newword = malloc(sizeof(char) * 1);
+		if (newword == NULL)
+			return (NULL);
+		newword[0] = '\0';
+	}
 	return (newword);
 }
 
@@ -97,10 +104,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (s1 == NULL)
 	{
-		s1 = malloc(sizeof(char) * 1);
-		if (s1 == NULL)
-			return (NULL);
-		s1[0] = '\0';
+		s1 = ft_empty();
 	}
 	newword = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
 	if (newword == NULL)
