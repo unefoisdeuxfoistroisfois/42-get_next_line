@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/08 15:31:54 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/09 11:16:59 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_reste(char *str)
 		return (NULL);
 	}
 	i++;
-	rest = malloc(ft_strlen(str) - i + 1);
+	rest = malloc(sizeof(char) * ft_strlen(str) - i + 1);
 	if (rest == NULL)
 		return (NULL);
 	while (str[i] != '\0')
