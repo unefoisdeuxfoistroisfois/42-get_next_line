@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/11 00:01:12 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/12 22:19:54 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ char	*get_next_line(int fd)
 	if (conc == NULL || conc[0] == '\0')
 	{
 		ft_free(conc);
+		conc = NULL;
 		return (NULL);
 	}
 	line = ft_check_word(conc);
