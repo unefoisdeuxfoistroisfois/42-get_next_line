@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/12 22:19:54 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/14 16:08:22 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ char	*ft_read(int fd, char *word, char *conc)
 		i = read(fd, word, BUFFER_SIZE);
 		if (i < 0)
 		{
-			ft_free(word);
 			return (NULL);
 		}
 		word[i] = '\0';
