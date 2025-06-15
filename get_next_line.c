@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/14 16:08:22 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/15 16:19:27 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ char	*ft_read(int fd, char *word, char *conc)
 		}
 		word[i] = '\0';
 		conc = ft_strjoin(conc, word);
+		position = ft_strchr(conc, '\n');
 	}
 	return (conc);
 }
