@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:47:39 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/12 17:18:09 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/16 16:25:45 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
-# include <fcntl.h>
+
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
