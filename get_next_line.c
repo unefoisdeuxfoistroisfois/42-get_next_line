@@ -6,7 +6,7 @@
 /*   By: britela- <britela-@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:50:57 by britela-          #+#    #+#             */
-/*   Updated: 2025/06/15 16:19:27 by britela-         ###   ########.fr       */
+/*   Updated: 2025/06/28 17:44:39 by britela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*conc;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd != 3)
 		return (NULL);
 	word = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (word == NULL)
